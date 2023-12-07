@@ -1,0 +1,10 @@
+.alert {
+    height: calc(1.5em + .75rem + 2px);
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+*{
+    font-family: 'Hedvig Letters Serif', serif;
+/* font-family: 'Roboto', sans-serif; */
+}
