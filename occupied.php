@@ -1,27 +1,4 @@
-<?php
-    // Create connection
-    $conn = mysqli_connect("localhost", "root", "", "hotel");
 
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    // Query to get data from cities table
-    $sql = "SELECT group_id FROM `group`";
-    $result = mysqli_query($conn, $sql);
-
-    // Check if there are any results
-    if (mysqli_num_rows($result) > 0) {
-        // Output data of each row
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<option value='" . $row["group_id"] . "'>";
-        }
-    }
-
-    // Close connection
-    mysqli_close($conn);
-    ?>
     <!DOCTYPE html>
     <html lang="en" data-bs-theme="dark">
 
@@ -128,41 +105,14 @@
 
                     <div class="mb-3">
                         <label for="rate" class="form-label">Rate</label>
-                        <!-- Tambahkan value yang sudah diformat ke dalam input -->
                         <input type="text" class="form-control" id="rate" name="rate" value="<?php echo isset($arr['rate']) ? formatUang($arr['rate']) : ''; ?>" />
                         <div id="error-rate" class="alert alert-danger d-none"></div>
                     </div>
 
-
                     <div class="mb-3">
                         <label for="groupid" class="form-label">Group ID</label>
-                        <input class="form-control" list="datalistOptions" name="groupid" id="groupid" placeholder="Type to search...">
-                        <datalist id="datalistOptions">
-                            <?php
-                            // Create connection
-                            $conn = mysqli_connect("localhost", "root", "", "hotel");
+                        <input type="text" class="form-control" id="groupid" name="groupid" />
 
-                            // Check connection
-                            if (!$conn) {
-                                die("Connection failed: " . mysqli_connect_error());
-                            }
-
-                            // Query to get data from cities table
-                            $sql = "SELECT group_id FROM `group`";
-                            $result = mysqli_query($conn, $sql);
-
-                            // Check if there are any results
-                            if (mysqli_num_rows($result) > 0) {
-                                // Output data of each row
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option value='" . $row["group_id"] . "'>";
-                                }
-                            }
-
-                            // Close connection
-                            mysqli_close($conn);
-                            ?>
-                        </datalist>
                         <div id="error-groupid" class="alert alert-danger d-none"></div>
                     </div>
 

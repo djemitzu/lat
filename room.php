@@ -46,10 +46,19 @@ $result = $con->query($sql);
                 </div>
 
                 <div class="mb-3">
-                    <label for="lt" class="form-label">Lantai</label>
-                    <input type="number" class="form-control" id="lt" name="lt" max="20" />
-                    <div id="error-lt" class="alert alert-danger d-none"></div>
-                </div>
+  <label for="lt" class="form-label">Lantai</label>
+  <select class="form-select" id="lt" name="lt">
+    <?php
+      for ($i = 1; $i <= 20; $i++) {
+        if ($i != 4) {
+          echo "<option value='$i'>Lantai $i</option>";
+        }
+      }
+    ?>
+  </select>
+  <div id="error-lt" class="alert alert-danger d-none"></div>
+</div>
+
 
                 <div class="mb-3">
                     <label for="jnkm" class="form-label">Jenis Kamar</label>
