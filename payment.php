@@ -1,3 +1,11 @@
+<?php
+// Koneksi ke database
+$db = new PDO('mysql:host=localhost;dbname=hotel', 'root', '');
+
+// Query untuk mengambil semua paymentid dari tabel ar
+$query = $db->query("SELECT payment_id FROM ar");
+$payment_ids = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
@@ -29,12 +37,16 @@
     <div class="container mx-auto">
       <h1 class="mt-3 text-center">Payment</h1>
       <form action="payment.php" method="post" onsubmit="return validateForm()">
-        <div class="mb-3">
-          <label for="payment_id" class="form-label">Payment ID</label>
-          <input type="text" class="form-control" id="payment_id" name="payment_id" />
-          <div id="error-payment_id" class="alert alert-danger d-none"></div>
-        </div>
-
+      <div class="mb-3">
+    <label for="payment_id" class="form-label">Payment ID</label>
+    <select class="form-control" id="payment_id" name="payment_id">
+      <option value="">Pilih Salah Satu</option>
+        <?php foreach ($payment_ids as $payment_id): ?>
+            <option value="<?= $payment_id['payment_id'] ?>"><?= $payment_id['payment_id'] ?></option>
+        <?php endforeach; ?>
+    </select>
+    <div id="error-payment_id" class="alert alert-danger d-none"></div>
+</div>
         <div class="mb-3">
           <label for="tanggal" class="form-label">Tanggal</label>
           <input type="date" class="form-control" id="tanggal" name="tanggal" />
@@ -136,7 +148,6 @@
   } else {
     echo '<div class="container col-md-6 mx-auto">';
     echo "<h1 class=\"mt-3 text-center\">Result</h1>";
-    echo $header;
     echo '</div>';
     echo '<br>';
     echo '<br>';

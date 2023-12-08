@@ -49,7 +49,7 @@
             }
 
             // Query to get data from cities table
-            $sql = "SELECT group_id FROM `group`";
+            $sql = "SELECT group_id FROM `occupied`";
             $result = mysqli_query($conn, $sql);
 
             // Check if there are any results
@@ -200,7 +200,7 @@
 
     $data = array();
     $data["group_id"] = $_REQUEST["group_id"];
-    $data["room_id"] = $_REQUEST["room_id"];
+    $data["room_id"] = $_REQUEST["rid"];
     $data["tanggal"] = $_REQUEST["tanggal"];
     $data["jenis"] = $_REQUEST["jenis"];
     $data["keterangan"] = $_REQUEST["keterangan"];

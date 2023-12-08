@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Roboto:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <script>
         function validateForm() {
             var isValid = true;
@@ -38,7 +38,7 @@
             return isValid;
         }
     </script>
-  
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </head>
@@ -165,6 +165,12 @@
                             error: 'error-expired',
                             condition: $('#expired').val() == "",
                             message: 'Expired belum diisi'
+                        },
+                        {
+                            field: '#expired',
+                            error: 'error-expired',
+                            condition:new Date($('#expired').val()) < new Date(),
+                            message: 'Kartu tidak valid'
                         }
                     ];
                     $('.alert').addClass('d-none');
@@ -190,7 +196,6 @@
         echo '<div class="container col-md-6 mx-auto">';
         echo "<h1 class=\"mt-3 text-center\">Result</h1>";
 
-        echo $header;
         echo '</div>';
         echo '<br>';
 

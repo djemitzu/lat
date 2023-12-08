@@ -20,12 +20,7 @@ $(document).ready(function () {
                 condition: $('#gid').val() == "",
                 message: 'Group ID belum diisi'
             },
-            {
-                field: '#vid',
-                error: 'error-vid',
-                condition: $('#vid').val() == "" || $('#vid').val().length > 20,
-                message: 'Voucher ID belum diisi atau lebih dari 20 karakter'
-            },
+      
             {
                 field: '#dari',
                 error: 'error-dari',

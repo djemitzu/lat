@@ -5,10 +5,7 @@ $body = file_get_contents('php://input');
 $dataArr = json_decode($body, true);
 
 // Fungsi untuk memformat uang
-function formatUang($number, $matauang = true)
-{
-    return ($matauang ? "Rp " : "") . number_format($number, 0, ",", ".");
-}
+
 
 try {
     $sql = "SELECT rate.rate FROM room JOIN rate ON room.jenis_kamar = rate.jenis_kamar WHERE room.room_id = :room_id";
@@ -16,7 +13,7 @@ try {
     header("Content-Type: application/json");
     if ($arr) {
         // Format nilai rate sebelum meng-encode ke JSON
-        $arr['rate'] = formatUang($arr['rate']);
+        // $arr['rate'] = $arr['rate'];
         echo json_encode($arr);
     } else {
         throw new Exception("Room ID tidak ditemukan!");
